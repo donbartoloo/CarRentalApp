@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+Dodaj typ samochodu
+{% endblock %}
+{% block content %}
+
+<div class="add">
+    {% include 'includes/messages.html'%}
+    <div class="container py-5">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="text-center">Dodaj typ samochodu</h2>
+                <form method="post"  action="{% url 'add_car_type' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class = "text-center">
+                        <button type="submit" class="btn btn-primary">Dodaj typ samochodu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

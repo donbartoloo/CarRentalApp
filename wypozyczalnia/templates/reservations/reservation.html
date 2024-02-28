@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Rezerwacja
+{% endblock %}
+{% block content %}
+<div class="reservation_form">
+    {% include 'includes/messages.html' %}
+        <form action='/reservation' method='post'>
+            {% csrf_token %}
+            <div class="title">
+                <h2 class="text-center">Wybierz termin rezerwacji:</h2>
+            </div>
+                <div class="card mb-4">
+                    <div class="text-center">
+                        <div class="card-body">
+                                <div class="date_input">
+                                    <p class="mb-0">Data rozpoczęcia rezerwacji: <input type="date" id='start_date' name='start_date' min="<?= date('Y-m-d'); ?>" required>
+                                </div>
+                                <div class="date_input">
+                                    <p class="mb-0">Data zakończenia rezerwacji: <input type="date" id = 'finish_date', name= 'finish_date' min="<?= date('Y-m-d'); ?>" required><br></p>
+                                </div>
+                                <button class="btn btn-primary" id="search" type="submit">Szukaj</button>
+                        </div>
+                    </div>
+                </div>
+        </form>
+</div>
+<div class="results">
+    {% if available_cars %}
+        {%if available_cars == "start"%}
+
+        {%else%}
+            <div class="container py-5">
+                    <h2 class="text-center">Samochody dostępne w tym terminie:</h2>
+                    
+                    <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+                        {% for car in available_cars %}
+                            <div class = "col">
+                                <div class = "card">
+                                    <img class="card-img-top" src="{{car.photo.url}}" alt="car">
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{car.brand}} {{car.model}}</h4>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Typ samochodu: {{car.car_type}}</li>
+                                            <li class="list-group-item">Klimatyzacja: {{car.get_air_conditioning_display}}</li>
+                                            <li class="list-group-item">Ilość drzwi: {{car.get_doors_quantity_display}} </li>
+                                            <li class="list-group-item">Ilość ludzi: {{car.people_quantity}} </li>
+                                            <li class="list-group-item">Paliwo: {{car.get_fuel_type_display}} </li>
+                                            <li class="list-group-item">Skrzynia biegów: {{car.get_transmission_type_display}} </li>
+                                            <li class="list-group-item"></li>
+                                        </ul>
+                                        <h5>Cena: {{car.price}} zł/24h</h5> 
+                                        <a href="reservation/create_reservation?car={{car.id}}&start={{start_date}}&end={{finish_date}}"><button class="btn btn-primary">Zarezerwuj</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+            </div>
+        {% endif %}
+    {% else %}
+        <h3 class="text-center">Brak dostępnych samochodów na wybrany okres.</p>
+    {% endif %}
+    </div>
+</div>
+
+<script>
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    document.getElementById('start_date').min = new Date().toISOString().split('T')[0];
+    document.getElementById('finish_date').min = tomorrow.toISOString().split('T')[0];
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+Samochody
+{% endblock %}
+{% block content %}
+<div class="employee_cars">
+    {% include 'includes/messages.html'%}
+    <div class = "container py-5">
+        <h2 class = "text-center">Samochody</h2>
+        <form method="get" action="/employee_cars">
+            <div class= "filters">
+                <div class = "form-outline mb-4">
+                    <label for="brand_or_model" class="form-label">Szukaj po nazwie marki lub modelu</label>
+                    <input type="text" id="brand_or_model" class="form-control" type="search" name="brand_or_model" placeholder = "Szukaj">
+                </div>
+                <div class = "form-outline mb-4">
+                    <button type="submit" class="btn btn-primary">Szukaj</button>
+                </div>
+            </div>
+        </form>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Marka</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Typ samochodu</th>
+                    <th scope="col">Akcje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {%for car in cars%}
+                  <tr>
+                    <td>{{car.id}}</td>
+                    <td>{{car.brand}}</td>
+                    <td>{{car.model}}</td>
+                    <td>{{car.car_type}}</td>
+                    <td><a href="{% url 'edit_car' car.id %}"><button type="button" class="btn btn-primary">Edytuj</button></a>  
+                        <a href="{% url 'delete_car' car.id %}"><button type="button" class="btn btn-danger">Usuń</button></a></td>
+                  </tr>
+                {%endfor%}
+                </tbody>
+              </table>
+              <a href="{% url 'add_car' %}"><button type="button" class="btn btn-primary">Dodaj samochód</button></a>
+    </div>
+</div>
+</div>
+{% endblock%}

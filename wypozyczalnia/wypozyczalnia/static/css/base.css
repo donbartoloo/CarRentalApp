@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: white;
+    line-height: 1.5;
+    /* margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; */
+
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: #1F2022;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    position: relative;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navigation a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: .3s;
+}
+
+.navigation a:hover::before {
+    width: 100%;
+}
+
+.cars_container {
+    padding-top: 70px;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+
+.register_container {
+    padding-top: 100px;
+    justify-content: center;
+    display: flex;
+    margin: 0;
+}
+
+.login_container {
+    padding-top: 120px;
+    justify-content: center;
+    display: flex;
+    margin: 0;
+}
+
+.profile {
+    padding-top: 120px;
+    position: relative;
+}
+
+.reservations {
+    padding-top: 120px;
+}
+
+.reservation_form {
+    padding-top: 120px;
+    margin: auto;
+    width: 50%;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+    padding-left: 50px;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown-content a:hover {background-color: #f1f1f1}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.faq {
+    padding-top: 120px;
+    width: 65%;
+    margin: auto;
+}
+.contact {
+    padding-top: 120px;
+}
+
+.home {
+    padding-top: 120px;
+}
+
+.news {
+    width: 70%;
+    margin: auto;
+}
+.title {
+    padding-bottom: 30px;
+}
+
+.date_input {
+    margin: 10px;
+}
+.reservation_confirmation {
+    padding-top: 80px;
+    position: relative;
+}
+
+.details {
+    padding-top: 120px;
+    width: 65%;
+    margin: auto;
+}
+
+.car_image {
+    width: 100%;
+    height: 35vw;
+    object-fit: cover;
+}
+
+.news_image {
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+}
+
+.employee_dashboard {
+    padding-top: 120px;
+
+}
+
+.add {
+    padding-top: 120px;
+    margin: auto;
+}
+.employee_cars {
+    padding-top: 100px;
+}
+.employee_reservations {
+    padding-top: 100px;
+}
+
+.contact_info {
+    width: 50%;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.employee_news {
+    padding-top: 100px;
+}
+
+.delete {
+    padding-top: 100px;
+}
+
+.edit {
+    padding-top: 100px;
+}
+
+.response_template {
+    padding-top: 100px;
+}
+
+
+.site-footer {
+    background-color: #1F2022;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: white;
+    height: 2.5rem; 
+}
+

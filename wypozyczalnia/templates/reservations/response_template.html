@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Wiadomość
+{% endblock %}
+{% block content %}
+<div class="response_template">
+    <div class="container py-5">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="text-center">
+                    <h5>{{ message }}</h5> <br>
+                    <br>
+                    Zostaniesz przekierowany automatycznie za 5 sekund...<br>
+                    <p>Jeżeli nie nastąpi przekierowanie, kliknij <a href="{% url "my_reservations" %}">tutaj</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(function() { window.location.href = "{% url "my_reservations" %}";}, 5000);
+</script>
+{% endblock %}

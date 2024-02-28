@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+Dodaj samochód
+{% endblock %}
+{% block content %}
+
+<div class="add">
+    <div class="container py-5">
+        <h2 class="text-center">Dodaj samochód</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" action="{% url 'add_car' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Dodaj samochód</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

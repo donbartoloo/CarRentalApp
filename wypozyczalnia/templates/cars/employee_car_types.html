@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+Typy samochodów
+{% endblock %}
+{% block content %}
+<div class="employee_cars">
+    {% include 'includes/messages.html'%}
+    <div class = "container py-5">
+        <h2 class = "text-center">Typy samochodów</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Opis</th>
+                    <th scope="col">Akcje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {%for car_type in car_types%}
+                  <tr>
+                    <td>{{car_type.id}}</td>
+                    <td>{{car_type.name}}</td>
+                    <td>{{car_type.description}}</td>
+                    <td><a href="{% url 'edit_car_type' car_type.id %}"><button type="button" class="btn btn-primary">Edytuj</button></a>  
+                        <a href="{% url 'delete_car_type' car_type.id %}"><button type="button" class="btn btn-danger">Usuń</button></a></td>
+                  </tr>
+                {%endfor%}
+                </tbody>
+              </table>
+            <a href="{% url 'add_car_type' %}"><button type="button" class="btn btn-primary">Dodaj typ samochodu</button></a>
+    </div>
+</div>
+</div>
+{% endblock%}

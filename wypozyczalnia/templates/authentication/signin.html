@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+Logowanie
+{% endblock %}
+{% block content %}
+{%include 'includes/messages.html'%}
+    <div class="login_container">
+        <div class="card mb-4">
+            <form action="/signin" method ="post">
+                <div class="card-body">
+                    <h2 class = "text-center">Zaloguj się</h2>
+                    {% csrf_token %}
+                    <div class = "form-outline mb-4">
+                        <input type="text" class="form-control" id="email" name="email" placeholder = "Adres e-mail" Required>
+                    </div>
+                    <div class = "form-outline mb-4">
+                        <input type="password" class="form-control" id="password1" name="password1" placeholder = "Hasło" Required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Zaloguj</button>
+                    </div>
+                    <div class="text-center">
+                        Nie masz jeszcze konta? <a href={% url 'signup'%}>Zarejestruj się!</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

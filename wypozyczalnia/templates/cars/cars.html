@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}
+Samochody
+{% endblock %}
+{% block content %}
+<div class="cars_container">
+    
+    <div class="container py-5">
+        <h2 class="text-center"> Samochody dostępne w naszej flocie:</h2>
+        <form method="get" action="/cars">
+            <div class= "filters">
+                <div class = "form-outline mb-4">
+                    <label for="brand_or_model" class="form-label">Szukaj po nazwie marki lub modelu</label>
+                    <input type="text" id="brand_or_model" class="form-control" type="search" name="brand_or_model" placeholder = "Szukaj">
+                </div>
+                    <div class = "form-outline mb-4">
+                        <div class="row">
+                            <div class="col-sm">
+                                <label for="inputState1" class="form-label">Typ samochodu</label>
+                                <select id="inputState1" name="car_type" class="form-select">
+                                    <option selected>Wybierz...</option>
+                                    {% for car_type in car_types%}
+                                    <option>{{car_type}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-sm">
+                                <label for="inputState2" class="form-label">Paliwo</label>
+                                <select id="inputState2" name="fuel_type" class="form-select">
+                                    <option selected>Wybierz...</option>
+                                    <option value="GAS">Benzyna</option>
+                                    <option value="DIE">Diesel</option>
+                                    <option value="LPG">LPG</option>
+                                    <option value="ELE">Elektryczny</option>
+                                </select>
+                            </div>
+                            <div class="col-sm">
+                                <label for="inputState3" class="form-label">Skrzynia biegów</label>
+                                <select id="inputState3" name="transmission_type" class="form-select">
+                                    <option selected>Wybierz...</option>
+                                    <option value="A">Automatyczna</option>
+                                    <option value="M">Manualna</option>
+                                </select>
+                            </div>
+                            <div class="col-sm">
+                                <label for="inputState5" class="form-label">Ilość drzwi</label>
+                                <select id="inputState5" name="doors_quantity" class="form-select">
+                                    <option selected>Wybierz...</option>
+                                    <option value="TWO">2</option>
+                                    <option value="THR">3</option>
+                                    <option value="FOU">4</option>
+                                    <option value="FIV">5</option>
+                                </select>
+                            </div>
+                            <div class="col-sm">
+                                <label for="inputState5" class="form-label">Klimatyzacja</label>
+                                <select id="inputState5" name="air_conditioning" class="form-select">
+                                    <option selected>Wybierz...</option>
+                                    <option value="YES">Tak</option>
+                                    <option value="NO">Nie</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                <button type="submit" class="btn btn-primary">Szukaj</button>
+            </div>
+        </form>
+        <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+            {% for car in cars %}
+                <div class = "col">
+                    <a style="text-decoration: none;" href="car_details?car={{car.id}}">
+                    <div class = "card">
+                        <img class="card-img-top" src="{{ car.photo.url }}" alt="car">
+                        <div class="card-body">
+                            <h4 class="card-title">{{car.brand}} {{car.model}}</h4>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+

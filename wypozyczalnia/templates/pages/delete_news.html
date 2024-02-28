@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+Usuń aktualności
+{% endblock %}
+{% block content %}
+
+<div class="delete">
+    {% include 'includes/messages.html'%}
+    <div class="container py-5">
+        <h2 class="text-center">Usuń aktualności</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="text-center">
+                    <p>Czy napewno chcesz usunąć {{ news.title }}?</p>
+                    <form method="post" action="{% url 'delete_news' news.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Usuń</button>
+                    </form>
+                    <a href="{% url 'employee_news' %}"><button type="submit" class="btn btn-danger">Anuluj</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

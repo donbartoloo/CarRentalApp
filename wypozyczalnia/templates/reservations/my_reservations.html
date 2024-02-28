@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="reservations">
+  <include 'includes/messages.html'>
+    <div class = "container py-5">
+        <h2 class = "text-center">Moje rezerwacje</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Samochód</th>
+                    <th scope="col">Data złożenia rezerwacji</th>
+                    <th scope="col">Data rozpoczęcia</th>
+                    <th scope="col">Data zakończenia</th>
+                    <th scope="col">Status rezerwacji</th>
+                    <th scope="col">Akcje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {%for reservation in reservations%}
+                  <tr>
+                    <td>{{reservation.car}}</td>
+                    <td>{{reservation.reservation_date}}
+                    <td>{{reservation.start_date}}</td>
+                    <td>{{reservation.finish_date}}</td>
+                    <td>{{reservation.get_reservation_status_display}}</td>
+                    <td><a href="{% url 'cancel_reservation' reservation.id %}"><button type="button" class="btn btn-danger">Anuluj</button></a></td>
+                  </tr>
+                {%endfor%}
+                </tbody>
+              </table>
+    </div>
+</div>
+{% endblock content %}

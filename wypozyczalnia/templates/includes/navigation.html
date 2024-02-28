@@ -1,0 +1,26 @@
+{% load static %}
+<header>
+    <a class="logo" href={% url 'home' %}><strong>CarRentalApp</strong></a>
+    <nav class="navigation">
+        {% if user_is_employee%}
+        <a href={% url 'dashboard'%}>Dashboard</a>
+        {% endif %}
+        <a href={% url 'reservation' %}>Rezerwacja</a>
+        <a href={% url 'cars'%}>Samochody</a>
+        <a href={% url 'faq'%}>FAQ</a>
+        <a href={% url 'contact'%}>Kontakt</a>
+        {%if user.is_authenticated%}
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle">{{user.first_name}}</button>
+          <div class="dropdown-content">
+          <a href={% url 'profile'%}>Profil</a>
+          <a href={% url 'my_reservations'%}>Moje rezerwacje</a>
+          <a href={% url 'signout'%}>Wyloguj się</a>
+          </div>
+        </div>
+        {% else %}
+            <a href={% url 'signin'%}>Logowanie</a>
+            <a href={% url 'signup'%}>Rejestracja</a>
+        {%endif%}
+    </nav>
+</header>

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static%}
+{% block title %}
+{{car.brand}} {{car.model}}
+{% endblock %}
+
+{% block content %}
+<div class="details">
+    <div class="title">
+        <h2 class="text-center">{{car.brand}} {{car.model}}</h2>
+    </div>
+<div class="card mb-3">
+    <img src="{{ car.photo.url }}" class="car_image" alt="car">
+    <div class="card-body">
+      <h6><strong>Opis</strong></h6>
+      <p class="card-text">{{car.description}}</p>
+      <h6><strong>Dane</strong></h6>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Typ samochodu: {{car.car_type}}</li>
+        <li class="list-group-item">Klimatyzacja: {{car.get_air_conditioning_display}}</li>
+        <li class="list-group-item">Ilość drzwi: {{car.get_doors_quantity_display}} </li>
+        <li class="list-group-item">Ilość ludzi: {{car.people_quantity}} </li>
+        <li class="list-group-item">Paliwo: {{car.get_fuel_type_display}} </li>
+        <li class="list-group-item">Skrzynia biegów: {{car.get_transmission_type_display}} </li>
+        <li class="list-group-item"></li>
+    </ul>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

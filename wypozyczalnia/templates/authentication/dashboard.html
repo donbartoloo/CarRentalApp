@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static%}
+{% block title %}
+Dashboard
+{%endblock%}
+{% block content %}
+<div class="employee_dashboard">
+    {%include 'includes/messages.html'%}
+    <div class="container py-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+                <div class = "col">
+                    <a style="text-decoration: none;" href="employee_cars">
+                    <div class = "card">
+                        <div class="card-body">
+                            <h4 class="card-title">Samochody</h4>
+                            Liczba wszystkich samochodów: {{cars_count}}
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class = "col">
+                    <a style="text-decoration: none;" href="employee_car_types">
+                    <div class = "card">
+                        <div class="card-body">
+                            <h4 class="card-title">Typy samochodów</h4>
+                            Liczba wszystkich typów samochodów: {{car_type_count}}
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class = "col">
+                    <a style="text-decoration: none;" href="employee_reservations">
+                    <div class = "card">
+                        <div class="card-body">
+                            <h4 class="card-title">Rezerwacje</h4>
+                            Liczba wszystkich rezerwacji: {{reservations_count}}
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class = "col">
+                    <a style="text-decoration: none;" href="employee_news">
+                    <div class = "card">
+                        <div class="card-body">
+                            <h4 class="card-title">Aktualności</h4>
+                            Liczba wszystkich aktualności: {{news_count}}
+                        </div>
+                    </div>
+                    </a>
+                </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}
+Rezerwacje
+{% endblock %}
+{% block content %}
+<div class="employee_reservations">
+    {% include 'includes/messages.html'%}
+    <div class = "container py-5">
+        <div class="title">
+            <h2 class = "text-center">Rezerwacje</h2>
+        </div>
+        <form method="get" action="/employee_reservations">
+          <div class= "filters">
+            <div class="row">
+              <div class="col-sm">
+                <div class = "form-outline mb-4">
+                    <label for="email" class="form-label">Szukaj po adresie e-mail</label>
+                    <input type="text" id="email" class="form-control" type="search" name="email" placeholder = "Szukaj">
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class = "form-outline mb-4">
+                  <label for="brand_or_model" class="form-label">Szukaj po nazwie marki lub modelu samochodu</label>
+                  <input type="text" id="brand_or_model" class="form-control" type="search" name="brand_or_model" placeholder = "Szukaj">
+                </div>
+              </div>
+            </div>
+              <div class = "form-outline mb-4">
+                  <button type="submit" class="btn btn-primary">Szukaj</button>
+              </div>
+          </div>
+      </form>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Użytkownik</th>
+                    <th scope="col">Numer telefonu</th>
+                    <th scope="col">Samochód</th>
+                    <th scope="col">Data złożenia rezerwacji</th>
+                    <th scope="col">Data rozpoczęcia</th>
+                    <th scope="col">Data zakończenia</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Akcje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {%for reservation in reservations %}
+                  <tr>
+                    <td>{{reservation.id}}</td>
+                    <td>{{reservation.user}}</td>
+                    <td>{{reservation.user.phone}}</td>
+                    <td>{{reservation.car}}</td>
+                    <td>{{reservation.reservation_date}}
+                    <td>{{reservation.start_date}}</td>
+                    <td>{{reservation.finish_date}}</td>
+                    <td>{{reservation.get_reservation_status_display}}</td>
+                    <td><a href="{% url 'edit_reservation' reservation.id %}"><button type="button" class="btn btn-primary">Edytuj</button></a>
+                        <a href="{% url 'delete_reservation' reservation.id %}"><button type="button" class="btn btn-danger">Usuń</button></td></a>
+                  </tr>
+                {%endfor%}
+                </tbody>
+              </table>
+              <a href="{% url 'add_reservation' %}"><button type="button" class="btn btn-primary">Dodaj rezerwację</button></a>
+    </div>
+</div>
+</div>
+{% endblock%}
